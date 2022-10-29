@@ -1,5 +1,6 @@
 import {database} from "../database/database.js";
 import {DataTypes} from "sequelize";
+import {SuggestionModel} from "./SuggestionModel.js";
 
 export const ClientModel = database.define("clients", {
     id: {
@@ -36,3 +37,5 @@ export const ClientModel = database.define("clients", {
     timestamps: false,
     schema: 'public'
 })
+
+ClientModel.hasMany(SuggestionModel, {foreignKey: 'client_id'})

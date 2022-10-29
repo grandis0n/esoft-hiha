@@ -1,5 +1,6 @@
 import {database} from "../database/database.js";
 import {DataTypes} from "sequelize";
+import {SuggestionModel} from "./SuggestionModel.js";
 
 export const RealtyModel = database.define("realty", {
     id: {
@@ -73,3 +74,4 @@ export const RealtyModel = database.define("realty", {
     schema: 'public'
 })
 
+RealtyModel.hasMany(SuggestionModel, {foreignKey: 'realty_id'})

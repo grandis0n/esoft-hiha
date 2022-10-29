@@ -21,4 +21,13 @@ export class ValidationError extends Error {
             location: "body"
         }])
     }
+
+    static agentAndClientTogether() {
+        return new ValidationError(400, 'Ошибка при валидации', [{
+            msg: "Нельзя, чтобы было отправлено и client_id, и agent_id одновременно",
+            param: ['client_id', 'agent_id'],
+            location: "body"
+        }])
+    }
+
 }

@@ -5,6 +5,7 @@ import {database} from "./database/database.js";
 import router from "./routers/routers.js";
 import {RealtyModel} from "./models/RealtyModel.js";
 import {TypeRealtyModel} from "./models/TypeRealtyModel.js";
+import {SuggestionModel} from "./models/SuggestionModel.js";
 
 config()
 
@@ -23,8 +24,7 @@ app.use(cors(
 app.use('/api', router)
 
 // database.sync({alter: true}).then(async () => {
-//     await RealtyModel.findAll()
-//     await TypeRealtyModel.findAll()
+//     await SuggestionModel.findAll()
 //     console.log('Connection has been established successfully.');
 // }).catch((error) => {
 //     console.error('Unable to connect to the database: ', error);

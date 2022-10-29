@@ -6,6 +6,12 @@ import {ClientValidatorsCreate, ClientValidatorsGet, ClientValidatorsUpdate} fro
 import {ClientController} from "../controllers/ClientController.js";
 import {RealtyValidatorsCreate, RealtyValidatorsGet, RealtyValidatorsUpdate} from "../validators/RealtyValidators.js";
 import {RealtyController} from "../controllers/RealtyController.js";
+import {
+    SuggestionValidatorsCreate,
+    SuggestionValidatorsGet,
+    SuggestionValidatorsUpdate
+} from "../validators/SuggestionValidators.js";
+import {SuggestionController} from "../controllers/SuggestionController.js";
 
 const router = Router()
 
@@ -23,5 +29,11 @@ router.get('/realty/all', RealtyValidatorsGet, RealtyController.get, errorMiddle
 router.post('/realty/create', RealtyValidatorsCreate, RealtyController.create, errorMiddlewares)
 router.put('/realty/update/:id', RealtyValidatorsUpdate, RealtyController.update, errorMiddlewares)
 router.delete('/realty/delete/:id', RealtyController.delete, errorMiddlewares)
+
+router.get('/suggestion/all', SuggestionValidatorsGet, SuggestionController.get, errorMiddlewares)
+router.post('/suggestion/create', SuggestionValidatorsCreate, SuggestionController.create, errorMiddlewares)
+router.put('/suggestion/update/:id', SuggestionValidatorsUpdate, SuggestionController.update, errorMiddlewares)
+router.delete('/suggestion/delete/:id', SuggestionController.delete, errorMiddlewares)
+
 
 export default router
