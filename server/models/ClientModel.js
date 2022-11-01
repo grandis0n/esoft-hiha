@@ -1,6 +1,7 @@
 import {database} from "../database/database.js";
 import {DataTypes} from "sequelize";
 import {SuggestionModel} from "./SuggestionModel.js";
+import {DemandModel} from "./DemandModel.js";
 
 export const ClientModel = database.define("clients", {
     id: {
@@ -10,28 +11,28 @@ export const ClientModel = database.define("clients", {
     },
     last_name: {
         type: DataTypes.STRING,
-        default: null,
+        defaultValue: null,
         allowNull: true
     },
     middle_name: {
         type: DataTypes.STRING,
-        default: null,
+        defaultValue: null,
         allowNull: true
     },
     first_name: {
         type: DataTypes.STRING,
-        default: null,
+        defaultValue: null,
         allowNull: true
     },
     phone: {
         type: DataTypes.STRING,
         allowNull: true,
-        default: null
+        defaultValue: null
     },
     email: {
         type: DataTypes.STRING,
         allowNull: true,
-        default: null
+        defaultValue: null
     },
 }, {
     timestamps: false,
@@ -39,3 +40,4 @@ export const ClientModel = database.define("clients", {
 })
 
 ClientModel.hasMany(SuggestionModel, {foreignKey: 'client_id'})
+ClientModel.hasMany(DemandModel, {foreignKey: 'client_id'})

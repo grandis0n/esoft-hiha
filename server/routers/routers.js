@@ -12,6 +12,8 @@ import {
     SuggestionValidatorsUpdate
 } from "../validators/SuggestionValidators.js";
 import {SuggestionController} from "../controllers/SuggestionController.js";
+import {DemandValidatorsCreate, DemandValidatorsGet, DemandValidatorsUpdate} from "../validators/DemandValidators.js";
+import {DemandController} from "../controllers/DemandController.js";
 
 const router = Router()
 
@@ -34,6 +36,11 @@ router.get('/suggestion/all', SuggestionValidatorsGet, SuggestionController.get,
 router.post('/suggestion/create', SuggestionValidatorsCreate, SuggestionController.create, errorMiddlewares)
 router.put('/suggestion/update/:id', SuggestionValidatorsUpdate, SuggestionController.update, errorMiddlewares)
 router.delete('/suggestion/delete/:id', SuggestionController.delete, errorMiddlewares)
+
+router.get('/demand/all', DemandValidatorsGet, DemandController.get, errorMiddlewares)
+router.post('/demand/create', DemandValidatorsCreate, DemandController.create, errorMiddlewares)
+router.put('/demand/update/:id', DemandValidatorsUpdate, DemandController.update, errorMiddlewares)
+router.delete('/demand/delete/:id', DemandController.delete, errorMiddlewares)
 
 
 export default router

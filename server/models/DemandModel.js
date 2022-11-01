@@ -1,12 +1,15 @@
 import {database} from "../database/database.js";
 import {DataTypes} from "sequelize";
-import {SuggestionModel} from "./SuggestionModel.js";
 
-export const RealtyModel = database.define("realty", {
+export const DemandModel = database.define("demand", {
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true
+    },
+    served: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
     },
     address_city: {
         type: DataTypes.STRING,
@@ -28,50 +31,77 @@ export const RealtyModel = database.define("realty", {
         allowNull: true,
         defaultValue: null
     },
-    coordinate_latitude: {
-        type: DataTypes.FLOAT,
-        allowNull: true,
-        defaultValue: null,
-        max: 90,
-        min: -90
-    },
-    coordinate_longitude: {
-        type: DataTypes.FLOAT,
-        allowNull: true,
-        defaultValue: null,
-        max: 180,
-        min: -180
-    },
-    floor: {
+    min_floor: {
         type: DataTypes.INTEGER,
         allowNull: true,
         defaultValue: null,
     },
-    total_rooms: {
+    max_floor: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+        defaultValue: null,
+    },
+    min_total_rooms: {
         type: DataTypes.INTEGER,
         allowNull: true,
         defaultValue: null,
         min: 1
     },
-    total_floors: {
+    max_total_rooms: {
         type: DataTypes.INTEGER,
         allowNull: true,
         defaultValue: null,
         min: 1
     },
-    area: {
+    min_total_floors: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+        defaultValue: null,
+        min: 1
+    },
+    max_total_floors: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+        defaultValue: null,
+        min: 1
+    },
+    min_area: {
         type: DataTypes.FLOAT,
         allowNull: true,
         defaultValue: null,
         min: 0
     },
+    max_area: {
+        type: DataTypes.FLOAT,
+        allowNull: true,
+        defaultValue: null,
+        min: 0
+    },
+    min_price: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+        defaultValue: null,
+        min: 1
+    },
+    max_price: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+        defaultValue: null,
+        min: 1
+    },
     type_id: {
         type: DataTypes.INTEGER,
         allowNull: false
-    }
+    },
+    agent_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
+    client_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
 }, {
     timestamps: false,
     schema: 'public'
 })
-
-RealtyModel.hasMany(SuggestionModel, {foreignKey: 'realty_id'})

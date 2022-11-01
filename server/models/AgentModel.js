@@ -1,6 +1,7 @@
 import {database} from "../database/database.js";
 import {DataTypes} from "sequelize";
 import {SuggestionModel} from "./SuggestionModel.js";
+import {DemandModel} from "./DemandModel.js";
 
 export const AgentModel = database.define("agents", {
     id: {
@@ -23,7 +24,7 @@ export const AgentModel = database.define("agents", {
     deal_share: {
         type: DataTypes.FLOAT,
         allowNull: true,
-        default: null
+        defaultValue: null
     },
 }, {
     timestamps: false,
@@ -31,3 +32,4 @@ export const AgentModel = database.define("agents", {
 })
 
 AgentModel.hasMany(SuggestionModel, {foreignKey: 'agent_id'})
+AgentModel.hasMany(DemandModel, {foreignKey: 'agent_id'})
