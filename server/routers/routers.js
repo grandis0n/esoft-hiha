@@ -22,6 +22,8 @@ import {
 import {DemandController} from "../controllers/DemandController.js";
 import {DealValidatorsCreate, DealValidatorsUpdate} from "../validators/DealValidatots.js";
 import {DealController} from "../controllers/DealController.js";
+import {EventController} from "../controllers/EventController.js";
+import {EventValidatorsCreate, EventValidatorsGet} from "../validators/EventValidators.js";
 
 const router = Router()
 
@@ -58,6 +60,10 @@ router.get('/deal/all', DealController.get, errorMiddlewares)
 router.post('/deal/create', DealValidatorsCreate, DealController.create, errorMiddlewares)
 router.put('/deal/update/:id', DealValidatorsUpdate, DealController.update, errorMiddlewares)
 router.delete('/deal/delete/:id', DealController.delete, errorMiddlewares)
+
+router.get('/event/', EventValidatorsGet, EventController.get, errorMiddlewares)
+router.post('/event/create', EventValidatorsCreate, EventController.create, errorMiddlewares)
+router.delete('/event/delete/:id', EventController.delete, errorMiddlewares)
 
 
 export default router
