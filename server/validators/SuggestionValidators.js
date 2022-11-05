@@ -19,4 +19,8 @@ export const SuggestionValidatorsUpdate = [
     body('price', 'Плохой формат цены').optional().isInt({min: 1}),
 ]
 
+export const SuggestionValidatorsSearchForDemand = [
+    body('demand_id', 'Плохой формат идентификатора потребности').isInt({min: 1}),
+]
+
 

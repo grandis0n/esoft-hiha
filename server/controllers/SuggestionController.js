@@ -1,6 +1,5 @@
 import {validationResult} from "express-validator";
 import {ApiError} from "../exceptions/ApiError.js";
-import {RealtyService} from "../services/RealtyService.js";
 import {SuggestionService} from "../services/SuggestionService.js";
 
 export class SuggestionController {
@@ -64,4 +63,22 @@ export class SuggestionController {
             return next(e)
         }
     }
+
+    static async searchForDemand(req, res, next) {
+        try {
+            const errors = validationResult(req);
+            if (!errors.isEmpty()) {
+                return next(ApiError.badRequest('Ошибка при валидации', errors.array()))
+            }
+            const demand_id = req.body.demand_id
+            const resData = await SuggestionService.searchForDemand(demand_id)
+            if (resData.msg === 'bad') {
+                return next(resData.errors)
+            }
+            return res.json(resData)
+        } catch (e) {
+            return next(e)
+        }
+    }
+
 }

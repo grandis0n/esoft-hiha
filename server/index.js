@@ -4,6 +4,8 @@ import cors from 'cors'
 import {database} from "./database/database.js";
 import router from "./routers/routers.js";
 import {DemandModel} from "./models/DemandModel.js";
+import {DealModel} from "./models/DealModel.js";
+import {SuggestionModel} from "./models/SuggestionModel.js";
 
 config()
 
@@ -23,6 +25,8 @@ app.use('/api', router)
 
 // database.sync({alter: true}).then(async () => {
 //     await DemandModel.findAll()
+//     await DealModel.findAll()
+//     await SuggestionModel.findAll()
 //     console.log('Connection has been established successfully.');
 // }).catch((error) => {
 //     console.error('Unable to connect to the database: ', error);

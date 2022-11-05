@@ -1,5 +1,6 @@
 import {database} from "../database/database.js";
 import {DataTypes} from "sequelize";
+import {DealModel} from "./DealModel.js";
 
 export const DemandModel = database.define("demand", {
     id: {
@@ -105,3 +106,5 @@ export const DemandModel = database.define("demand", {
     timestamps: false,
     schema: 'public'
 })
+
+DemandModel.hasMany(DealModel, {foreignKey: 'demand_id'})

@@ -68,3 +68,7 @@ export const DemandValidatorsUpdate = [
         min: 1
     }),
 ]
+
+export const DemandValidatorsSearchForSuggestion = [
+    body('suggestion_id', 'Плохой формат идентификатора предложения').isInt({min: 1}),
+]

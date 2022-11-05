@@ -9,11 +9,19 @@ import {RealtyController} from "../controllers/RealtyController.js";
 import {
     SuggestionValidatorsCreate,
     SuggestionValidatorsGet,
+    SuggestionValidatorsSearchForDemand,
     SuggestionValidatorsUpdate
 } from "../validators/SuggestionValidators.js";
 import {SuggestionController} from "../controllers/SuggestionController.js";
-import {DemandValidatorsCreate, DemandValidatorsGet, DemandValidatorsUpdate} from "../validators/DemandValidators.js";
+import {
+    DemandValidatorsCreate,
+    DemandValidatorsGet,
+    DemandValidatorsSearchForSuggestion,
+    DemandValidatorsUpdate
+} from "../validators/DemandValidators.js";
 import {DemandController} from "../controllers/DemandController.js";
+import {DealValidatorsCreate, DealValidatorsUpdate} from "../validators/DealValidatots.js";
+import {DealController} from "../controllers/DealController.js";
 
 const router = Router()
 
@@ -36,11 +44,20 @@ router.get('/suggestion/all', SuggestionValidatorsGet, SuggestionController.get,
 router.post('/suggestion/create', SuggestionValidatorsCreate, SuggestionController.create, errorMiddlewares)
 router.put('/suggestion/update/:id', SuggestionValidatorsUpdate, SuggestionController.update, errorMiddlewares)
 router.delete('/suggestion/delete/:id', SuggestionController.delete, errorMiddlewares)
+router.get('/suggestion/search-for-demand', SuggestionValidatorsSearchForDemand,
+    SuggestionController.searchForDemand, errorMiddlewares)
 
 router.get('/demand/all', DemandValidatorsGet, DemandController.get, errorMiddlewares)
 router.post('/demand/create', DemandValidatorsCreate, DemandController.create, errorMiddlewares)
 router.put('/demand/update/:id', DemandValidatorsUpdate, DemandController.update, errorMiddlewares)
 router.delete('/demand/delete/:id', DemandController.delete, errorMiddlewares)
+router.get('/demand/search-for-suggestion', DemandValidatorsSearchForSuggestion,
+    DemandController.searchForSuggestion, errorMiddlewares)
+
+router.get('/deal/all', DealController.get, errorMiddlewares)
+router.post('/deal/create', DealValidatorsCreate, DealController.create, errorMiddlewares)
+router.put('/deal/update/:id', DealValidatorsUpdate, DealController.update, errorMiddlewares)
+router.delete('/deal/delete/:id', DealController.delete, errorMiddlewares)
 
 
 export default router

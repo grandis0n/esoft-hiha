@@ -3,6 +3,7 @@ import {RealtyModel} from "../models/RealtyModel.js";
 import {LevenshteinSearchRealty} from "../utils/LevenshteinSearchRealty.js";
 import {ValidationError} from "../exceptions/ValidationError.js";
 import {CheckPointInPolyon} from "../utils/CheckPointInPolyon.js";
+import {SuggestionModel} from "../models/SuggestionModel.js";
 
 
 export class RealtyService {
@@ -177,6 +178,10 @@ export class RealtyService {
             const agent = await RealtyModel.findOne({where: {id}})
             if (!agent) {
                 throw ApiError.badRequest(`Недвижимости с id = ${id} не существует`)
+            }
+            const suggestion = await SuggestionModel.findOne({where: {realty_id: id}})
+            if (suggestion) {
+                throw ApiError.badRequest(`Недвижимость с id = ${id} связана с предложением`)
             }
             await RealtyModel.destroy({where: {id}})
             return {

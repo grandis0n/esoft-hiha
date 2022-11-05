@@ -1,11 +1,16 @@
 import {database} from "../database/database.js";
 import {DataTypes} from "sequelize";
+import {DealModel} from "./DealModel.js";
 
 export const SuggestionModel = database.define("suggestion", {
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true
+    },
+    served: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
     },
     client_id: {
         type: DataTypes.INTEGER,
@@ -28,4 +33,7 @@ export const SuggestionModel = database.define("suggestion", {
     timestamps: false,
     schema: 'public'
 })
+
+
+SuggestionModel.hasMany(DealModel, {foreignKey: 'suggestion_id'})
 

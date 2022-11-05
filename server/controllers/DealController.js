@@ -1,16 +1,11 @@
 import {validationResult} from "express-validator";
 import {ApiError} from "../exceptions/ApiError.js";
-import {DemandService} from "../services/DemandService.js";
+import {DealService} from "../services/DealService.js";
 
-export class DemandController {
+export class DealController {
     static async get(req, res, next) {
         try {
-            const errors = validationResult(req);
-            if (!errors.isEmpty()) {
-                return next(ApiError.badRequest('Ошибка валидации', errors.array()))
-            }
-            const filterDTO = {...req.body}
-            const resData = await DemandService.get(filterDTO)
+            const resData = await DealService.get()
             return res.json(resData)
         } catch (e) {
             return next(e)
@@ -23,8 +18,8 @@ export class DemandController {
             if (!errors.isEmpty()) {
                 return next(ApiError.badRequest('Ошибка валидации', errors.array()))
             }
-            const demandDTO = {...req.body}
-            const resData = await DemandService.create(demandDTO)
+            const dealDTO = {...req.body}
+            const resData = await DealService.create(dealDTO)
             if (resData.msg === 'bad') {
                 return next(resData.errors)
             }
@@ -40,8 +35,8 @@ export class DemandController {
             if (!errors.isEmpty()) {
                 return next(ApiError.badRequest('Ошибка при валидации', errors.array()))
             }
-            const demandDTO = {...req.body, id: req.params.id}
-            const resData = await DemandService.update(demandDTO)
+            const dealDTO = {...req.body, id: req.params.id}
+            const resData = await DealService.update(dealDTO)
             if (resData.msg === 'bad') {
                 return next(resData.errors)
             }
@@ -54,7 +49,7 @@ export class DemandController {
     static async delete(req, res, next) {
         try {
             const id = req.params.id
-            const resData = await DemandService.delete(id)
+            const resData = await DealService.delete(id)
             if (resData.msg === 'bad') {
                 return next(resData.errors)
             }
@@ -63,22 +58,4 @@ export class DemandController {
             return next(e)
         }
     }
-
-    static async searchForSuggestion(req, res, next) {
-        try {
-            const errors = validationResult(req);
-            if (!errors.isEmpty()) {
-                return next(ApiError.badRequest('Ошибка при валидации', errors.array()))
-            }
-            const suggestion_id = req.body.suggestion_id
-            const resData = await DemandService.searchForSuggestion(suggestion_id)
-            if (resData.msg === 'bad') {
-                return next(resData.errors)
-            }
-            return res.json(resData)
-        } catch (e) {
-            return next(e)
-        }
-    }
-
 }

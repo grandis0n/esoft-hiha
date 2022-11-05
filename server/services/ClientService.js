@@ -2,6 +2,8 @@ import {ApiError} from "../exceptions/ApiError.js";
 
 import {ClientModel} from "../models/ClientModel.js";
 import {LevenshteinSearchAgentAndClient} from "../utils/LevenshteinSearchAgentAndClient.js";
+import {SuggestionModel} from "../models/SuggestionModel.js";
+import {DemandModel} from "../models/DemandModel.js";
 
 
 export class ClientService {
@@ -68,6 +70,14 @@ export class ClientService {
             const client = await ClientModel.findOne({where: {id}})
             if (!client) {
                 throw ApiError.badRequest(`Клиента с id = ${id} не существует`)
+            }
+            const suggestion = await SuggestionModel.findOne({where: {client_id: id}})
+            if (suggestion) {
+                throw ApiError.badRequest(`Клиент с id = ${id} связан с предложением`)
+            }
+            const demand = await DemandModel.findOne({where: {client_id: id}})
+            if (demand) {
+                throw ApiError.badRequest(`Клиент с id = ${id} связан с потребностью`)
             }
             await ClientModel.destroy({where: {id}})
             return {

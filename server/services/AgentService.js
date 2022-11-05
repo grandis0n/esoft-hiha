@@ -1,6 +1,8 @@
 import {AgentModel} from "../models/AgentModel.js";
 import {ApiError} from "../exceptions/ApiError.js";
 import {LevenshteinSearchAgentAndClient} from "../utils/LevenshteinSearchAgentAndClient.js";
+import {SuggestionModel} from "../models/SuggestionModel.js";
+import {DemandModel} from "../models/DemandModel.js";
 
 
 export class AgentService {
@@ -66,6 +68,14 @@ export class AgentService {
             const agent = await AgentModel.findOne({where: {id}})
             if (!agent) {
                 throw ApiError.badRequest(`Риелтора с id = ${id} не существует`)
+            }
+            const suggestion = await SuggestionModel.findOne({where: {agent_id: id}})
+            if (suggestion) {
+                throw ApiError.badRequest(`Риелтор с id = ${id} связан с предложением`)
+            }
+            const demand = await DemandModel.findOne({where: {agent_id: id}})
+            if (demand) {
+                throw ApiError.badRequest(`Риелтор с id = ${id} связан с потребностью`)
             }
             await AgentModel.destroy({where: {id}})
             return {
