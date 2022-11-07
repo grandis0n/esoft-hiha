@@ -3,8 +3,6 @@ import {config} from "dotenv";
 import cors from 'cors'
 import {database} from "./database/database.js";
 import router from "./routers/routers.js";
-import {EventModel} from "./models/EventModel.js";
-import {TypeEventModel} from "./models/TypeEventModel.js";
 
 config()
 
@@ -22,13 +20,11 @@ app.use(cors(
 ))
 app.use('/api', router)
 
-// database.sync({alter: true}).then(async () => {
-//     await EventModel.findAll()
-//     await TypeEventModel.findAll()
-//     console.log('Connection has been established successfully.');
-// }).catch((error) => {
-//     console.error('Unable to connect to the database: ', error);
-// });
+database.sync({alter: true}).then(async () => {
+    console.log('Connection has been established successfully.');
+}).catch((error) => {
+    console.error('Unable to connect to the database: ', error);
+});
 
 const start = async () => {
     try {
