@@ -32,36 +32,36 @@ router.post('/agent/create', AgentValidatorsCreate, AgentController.create, erro
 router.put('/agent/update/:id', AgentValidatorsUpdate, AgentController.update, errorMiddlewares)
 router.delete('/agent/delete/:id', AgentController.delete, errorMiddlewares)
 
-router.get('/client/all', ClientValidatorsGet, ClientController.get, errorMiddlewares)
+router.post('/client/all', ClientValidatorsGet, ClientController.get, errorMiddlewares)
 router.post('/client/create', ClientValidatorsCreate, ClientController.create, errorMiddlewares)
 router.put('/client/update/:id', ClientValidatorsUpdate, ClientController.update, errorMiddlewares)
 router.delete('/client/delete/:id', ClientController.delete, errorMiddlewares)
 
-router.get('/realty/all', RealtyValidatorsGet, RealtyController.get, errorMiddlewares)
+router.post('/realty/all', RealtyValidatorsGet, RealtyController.get, errorMiddlewares)
 router.post('/realty/create', RealtyValidatorsCreate, RealtyController.create, errorMiddlewares)
 router.put('/realty/update/:id', RealtyValidatorsUpdate, RealtyController.update, errorMiddlewares)
 router.delete('/realty/delete/:id', RealtyController.delete, errorMiddlewares)
 
-router.get('/suggestion/all', SuggestionValidatorsGet, SuggestionController.get, errorMiddlewares)
+router.post('/suggestion/all', SuggestionValidatorsGet, SuggestionController.get, errorMiddlewares)
 router.post('/suggestion/create', SuggestionValidatorsCreate, SuggestionController.create, errorMiddlewares)
 router.put('/suggestion/update/:id', SuggestionValidatorsUpdate, SuggestionController.update, errorMiddlewares)
 router.delete('/suggestion/delete/:id', SuggestionController.delete, errorMiddlewares)
-router.get('/suggestion/search-for-demand', SuggestionValidatorsSearchForDemand,
+router.post('/suggestion/search-for-demand', SuggestionValidatorsSearchForDemand,
     SuggestionController.searchForDemand, errorMiddlewares)
 
-router.get('/demand/all', DemandValidatorsGet, DemandController.get, errorMiddlewares)
+router.post('/demand/all', DemandValidatorsGet, DemandController.get, errorMiddlewares)
 router.post('/demand/create', DemandValidatorsCreate, DemandController.create, errorMiddlewares)
 router.put('/demand/update/:id', DemandValidatorsUpdate, DemandController.update, errorMiddlewares)
 router.delete('/demand/delete/:id', DemandController.delete, errorMiddlewares)
-router.get('/demand/search-for-suggestion', DemandValidatorsSearchForSuggestion,
+router.post('/demand/search-for-suggestion', DemandValidatorsSearchForSuggestion,
     DemandController.searchForSuggestion, errorMiddlewares)
 
-router.get('/deal/all', DealController.get, errorMiddlewares)
+router.post('/deal/all', DealController.get, errorMiddlewares)
 router.post('/deal/create', DealValidatorsCreate, DealController.create, errorMiddlewares)
 router.put('/deal/update/:id', DealValidatorsUpdate, DealController.update, errorMiddlewares)
 router.delete('/deal/delete/:id', DealController.delete, errorMiddlewares)
 
-router.get('/event/', EventValidatorsGet, EventController.get, errorMiddlewares)
+router.post('/event/', EventValidatorsGet, EventController.get, errorMiddlewares)
 router.post('/event/create', EventValidatorsCreate, EventController.create, errorMiddlewares)
 router.delete('/event/delete/:id', EventController.delete, errorMiddlewares)
 
