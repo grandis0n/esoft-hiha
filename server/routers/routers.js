@@ -27,7 +27,7 @@ import {EventValidatorsCreate, EventValidatorsGet} from "../validators/EventVali
 
 const router = Router()
 
-router.get('/agent/all', AgentValidatorsGet, AgentController.get, errorMiddlewares)
+router.post('/agent/all', AgentValidatorsGet, AgentController.get, errorMiddlewares)
 router.post('/agent/create', AgentValidatorsCreate, AgentController.create, errorMiddlewares)
 router.put('/agent/update/:id', AgentValidatorsUpdate, AgentController.update, errorMiddlewares)
 router.delete('/agent/delete/:id', AgentController.delete, errorMiddlewares)
