@@ -14,8 +14,7 @@ export const UTC_TIME = eval(String(process.env["UTC_TIME"]))
 app.use(express.json())
 app.use(cors(
     {
-        origin: '*',
-        credentials: false
+        origin: "http://localhost:3000"
     }
 ))
 app.use('/api', router)
