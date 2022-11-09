@@ -12,11 +12,11 @@ const PORT = process.env["PORT_API"] || 6000;
 export const UTC_TIME = eval(String(process.env["UTC_TIME"]))
 
 app.use(express.json())
-app.use(cors(
-    {
-        origin: "http://localhost:3000"
-    }
-))
+// app.use(cors(
+//     {
+//         origin: "http://localhost:3000"
+//     }
+// ))
 app.use('/api', router)
 
 database.sync({alter: true}).then(async () => {
