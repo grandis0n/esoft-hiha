@@ -4,6 +4,7 @@ import AuthScreens from "./screens/AuthScreens";
 import HomeScreen from "./screens/HomeScreen";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import {useEffect, useState} from "react";
+import CreateEventScreen from "./screens/CreateEventScreen";
 
 export default function App() {
 
@@ -16,6 +17,7 @@ export default function App() {
     })
 
     const [isAuth, setIsAuth] = useState(false)
+    const [isCreateScreen, setIsCreateScreen] = useState(false)
 
     useEffect(() => {
             check()
@@ -26,7 +28,7 @@ export default function App() {
         let isCheck = await AsyncStorage.getItem('AUTH').then(r => {
             return r
         })
-        setIsAuth(isCheck)
+        setIsAuth(JSON.parse(isCheck))
         console.log(isCheck)
     }
 
@@ -42,7 +44,15 @@ export default function App() {
             <View style={style.block}>
                 <StatusBar theme="auto"/>
                 {
-                    isAuth ? <HomeScreen exit={exit} user={isAuth}/> : <AuthScreens check={check}/>
+                    !isAuth && <AuthScreens check={check}/>
+                }
+                {
+                    (isAuth && !isCreateScreen) &&
+                    <HomeScreen exit={exit} user={isAuth} setIsCreateScreen={setIsCreateScreen}/>
+                }
+                {
+                    (isAuth && isCreateScreen) &&
+                    <CreateEventScreen exit={exit} user={isAuth} setIsCreateScreen={setIsCreateScreen}/>
                 }
             </View>
         </KeyboardAvoidingView>

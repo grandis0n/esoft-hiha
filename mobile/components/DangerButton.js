@@ -2,7 +2,7 @@ import {StyleSheet, Text, TouchableHighlight, View} from "react-native";
 import {useState} from "react";
 
 
-export default function DangerButton({text, color, onClick}) {
+export default function DangerButton({text, color, onClick, fontWeight}) {
 
     const styles = StyleSheet.create({
         buttonNormal: {
@@ -27,7 +27,8 @@ export default function DangerButton({text, color, onClick}) {
         },
         text: {
             color: color,
-            fontSize: 15
+            fontSize: 15,
+            fontWeight: fontWeight ? fontWeight : 'normal'
         }
     })
 

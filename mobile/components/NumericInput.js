@@ -2,7 +2,7 @@ import {StyleSheet, Text, TextInput, View} from "react-native";
 import {useState} from "react";
 
 
-export default function DefaultInput({text, color, onClick, placeholder, status, statusText, type = 'text'}) {
+export default function NumericInput({text, color, onClick, placeholder, status, statusText, type = 'text'}) {
 
     const styles = StyleSheet.create({
         buttonNormal: {
@@ -51,7 +51,8 @@ export default function DefaultInput({text, color, onClick, placeholder, status,
         onBlur: () => setIsFocus(false),
         placeholder: placeholder,
         onChangeText: changeValue,
-        type: type
+        type: type,
+        keyboardType: 'numeric'
     };
 
     return (

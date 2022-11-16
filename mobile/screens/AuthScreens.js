@@ -36,18 +36,59 @@ export default function AuthScreens({check}) {
             setError(true)
             return
         }
-        // const req = await fetch("https://esoft.onrender.com/api/agent/all", {
-        //     body: {
-        //         "first_name": data[0],
-        //         "middle_name": data[1],
-        //         "last_name": data[2]
-        //     }
-        // }).then((r) => {
-        //     return r
-        // })
-        await AsyncStorage.setItem('AUTH', JSON.stringify(data))
-        setError(false)
-        check()
+        let body = {
+            "last_name": data[0],
+            "first_name": data[1],
+            "middle_name": data[2]
+        }
+        body = JSON.stringify(body)
+        let status
+        const resData = await fetch("https://esoft.onrender.com/api/agent/all", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: body
+        }).then((r) => {
+            status = r.status
+            return r.json()
+        }).catch((e) => {
+            return 'bad' + e
+        })
+        console.log(resData)
+        if (status === 200) {
+            console.log(resData.data)
+            if (resData.data.length !== 0) {
+                let agent
+                body = JSON.parse(body)
+                for (let i = 0; i < resData.data.length; i++) {
+                    let item = resData.data[i]
+                    if (body.first_name === item.first_name && body.last_name === item.last_name &&
+                        body.middle_name === item.middle_name) {
+                        agent = {...item}
+                        break
+                    }
+                }
+                if (!agent) {
+                    setErrorText('Такого пользователя нет')
+                    setError(true)
+                    return
+                }
+                console.log(agent)
+                await AsyncStorage.setItem('AUTH', JSON.stringify(agent))
+                setError(false)
+                check()
+            } else {
+                setErrorText('Такого пользователя нет')
+                setError(true)
+                return
+            }
+        } else {
+            setErrorText('Невалидные ФИО')
+            setError(true)
+            return
+        }
+        console.log(resData)
     }
 
     const onCLickCheckAuth = () => {
