@@ -45,6 +45,9 @@ export class RealtyService {
             }
             if (!searchDTO.address_house_number && !searchDTO.address_apartment_number && !searchDTO.address_street
                 && !searchDTO.address_city) {
+                if (searchDTO.coordinates) {
+                    arrayRealty = [...CheckPointInPolyon(arrayRealty, searchDTO.coordinates)]
+                }
                 return {
                     msg: 'success',
                     data: [...arrayRealty]
