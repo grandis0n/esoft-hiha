@@ -6,8 +6,8 @@ import EditButton from "./UI/Button/Warn/EditButton";
 const DemandItem = ({demand, openModal, openEditModal, openSuggestionsModal}) => {
 
     return(
-        <div className="demand">
-            <ul className="demand__ul" onClick={() => openSuggestionsModal(demand)}>
+        <div className="client">
+            <ul className="client__ul" onClick={() => openSuggestionsModal(demand)}>
                 {demand.client_id !== null && demand.client_id !== ""
                 ? <li><h3>Id клиента:</h3> {demand.client_id}</li>
                 : <li><h3>Id клиента:</h3> Не указан</li> 

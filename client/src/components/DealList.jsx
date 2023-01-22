@@ -4,7 +4,7 @@ import DealItem from "./DealItem";
 
 const DealList = ({deals, openModal, openEditModal, openInfoModal}) => {
     return(
-        <div className="deals__list">
+        <div className="clients__list">
             {deals.map((deal) => 
               <DealItem deal={deal} openModal={openModal} openEditModal={openEditModal} key={deal.id} openInfoModal={openInfoModal}/>
             ) }

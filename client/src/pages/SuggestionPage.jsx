@@ -6,6 +6,11 @@ import DeleteButton from "../components/UI/Button/Delete/DeleteButton";
 import MyButton from "../components/UI/Button/Apply/MyButton";
 import MyInput from "../components/UI/Input/MyInput"
 import SuccessButton from "../components/UI/Button/Success/SuccessButton";
+import Box from '@mui/material/Box';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 
 const SuggestionPage = () => {
     const [suggestions, setSuggestions] = useState([]);
@@ -383,7 +388,7 @@ const SuggestionPage = () => {
     }
 
     return(
-        <div className="suggestions__container">
+        <div className="clients__container">
         <MyModal active={modalActive} setActive={setModalActive}>
           <h2 style={{textAlign: "center"}}>Удалить предложение?</h2>
           <DeleteButton onClick={()=> exit(delId)}>Delete</DeleteButton>
@@ -391,33 +396,57 @@ const SuggestionPage = () => {
         </MyModal>
         <MyModal active={modalCreateActive} setActive={setModalCreateActive}>
           <div className="createModal">
-            <label htmlFor="">
-                Выберите клиента
-                <select type="text" value={createSuggestion.client_id} onChange={e => setCreateSuggestion({...createSuggestion, client_id: e.target.value})}>
+            <Box sx={{ minWidth: 200 }}>
+                <FormControl fullWidth>
+                    <InputLabel id="demo-simple-select-label">Клиент</InputLabel>
+                    <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={createSuggestion.client_id||""}
+                    label="Age"
+                    className="box__margin"
+                    onChange={e => setCreateSuggestion({...createSuggestion, client_id: e.target.value})}
+                    >
                     {clients.map(client => {
-                        return <option key={client.id} value={client.id}>{client.first_name + ' ' + client.last_name}</option>
+                      return <MenuItem key={client.id} value={client.id}>{client.first_name + ' ' + client.last_name}</MenuItem>
                     })}
-                </select>
-            </label>
-
-            <label htmlFor="">
-            Выберите риелтора
-                <select type="text" value={createSuggestion.agent_id} onChange={e => setCreateSuggestion({...createSuggestion, agent_id: e.target.value})}>
+                    </Select>
+                </FormControl>
+            </Box>
+            <Box sx={{ minWidth: 200 }}>
+                <FormControl fullWidth>
+                    <InputLabel id="demo-simple-select-label">Риэлтор</InputLabel>
+                    <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={createSuggestion.agent_id||""}
+                    label="Age"
+                    className="box__margin"
+                    onChange={e => setCreateSuggestion({...createSuggestion, agent_id: e.target.value})}
+                    >
                     {agents.map(agent => {
-                        return <option key={agent.id} value={agent.id}>{agent.first_name + ' ' + agent.last_name}</option>
+                        return <MenuItem key={agent.id} value={agent.id}>{agent.first_name + ' ' + agent.last_name}</MenuItem>
                     })}
-                </select>
-            </label>
-
-            <label htmlFor="">
-            Выберите недвижимость
-                <select type="text" value={createSuggestion.realty_id} onChange={e => setCreateSuggestion({...createSuggestion, realty_id: e.target.value})}>
+                    </Select>
+                </FormControl>
+            </Box>
+            <Box sx={{ minWidth: 200 }}>
+                <FormControl fullWidth>
+                    <InputLabel id="demo-simple-select-label">Недвижимость</InputLabel>
+                    <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={createSuggestion.realty_id||""}
+                    label="Age"
+                    className="box__margin"
+                    onChange={e => setCreateSuggestion({...createSuggestion, realty_id: e.target.value})}
+                    >
                     {realties.map(realty => {
-                        return <option key={realty.id} value={realty.id}>{realty.address_city + ' ' + realty.address_street}</option>
+                      return <MenuItem key={realty.id} value={realty.id}>{realty.address_city + ' ' + realty.address_street}</MenuItem>
                     })}
-                </select>
-            </label>
-
+                    </Select>
+                </FormControl>
+            </Box>
 
             <MyInput type="number" placeholder="Укажите цену" value={createSuggestion.price} onChange={e => setCreateSuggestion({...createSuggestion, price: e.target.value})}></MyInput>
 
@@ -426,35 +455,59 @@ const SuggestionPage = () => {
           </div>
         </MyModal>
         <MyModal active={editModalActive} setActive={setEditModalActive}>
-          <div className="editModal">
-
-          <label htmlFor="">
-                Выберите клиента
-                <select type="text" value={suggestionToEdit.client_id} onChange={e => setSuggestionToEdit({...suggestionToEdit, client_id: e.target.value})}>
+          <div className="createModal">
+          <Box sx={{ minWidth: 200 }}>
+                <FormControl fullWidth>
+                    <InputLabel id="demo-simple-select-label">Клиент</InputLabel>
+                    <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={suggestionToEdit.client_id||""}
+                    label="Age"
+                    className="box__margin"
+                    onChange={e => setSuggestionToEdit({...suggestionToEdit, client_id: e.target.value})}
+                    >
                     {clients.map(client => {
-                        return <option key={client.id} value={client.id}>{client.first_name + ' ' + client.last_name}</option>
+                      return <MenuItem key={client.id} value={client.id}>{client.first_name + ' ' + client.last_name}</MenuItem>
                     })}
-                </select>
-            </label>
-
-
-            <label htmlFor="">
-                Выберите риелтора
-                <select type="text" value={suggestionToEdit.agent_id} onChange={e => setSuggestionToEdit({...suggestionToEdit, agent_id: e.target.value})}>
+                    </Select>
+                </FormControl>
+            </Box>
+            <Box sx={{ minWidth: 200 }}>
+                <FormControl fullWidth>
+                    <InputLabel id="demo-simple-select-label">Риэлтор</InputLabel>
+                    <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={suggestionToEdit.agent_id||""}
+                    label="Age"
+                    className="box__margin"
+                    onChange={e => setSuggestionToEdit({...suggestionToEdit, agent_id: e.target.value})}
+                    >
                     {agents.map(agent => {
-                        return <option key={agent.id} value={agent.id}>{agent.first_name + ' ' + agent.last_name}</option>
+                        return <MenuItem key={agent.id} value={agent.id}>{agent.first_name + ' ' + agent.last_name}</MenuItem>
                     })}
-                </select>
-            </label>
-
-            <label htmlFor="">
-                Выберите недвижимость
-                <select type="text" value={suggestionToEdit.realty_id} onChange={e => setSuggestionToEdit({...suggestionToEdit, realty_id: e.target.value})}>
+                    </Select>
+                </FormControl>
+            </Box>
+            <Box sx={{ minWidth: 200 }}>
+                <FormControl fullWidth>
+                    <InputLabel id="demo-simple-select-label">Недвижимость</InputLabel>
+                    <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={suggestionToEdit.realty_id||""}
+                    label="Age"
+                    className="box__margin"
+                    onChange={e => setSuggestionToEdit({...suggestionToEdit, realty_id: e.target.value})}
+                    >
                     {realties.map(realty => {
-                        return <option key={realty.id} value={realty.id}>{realty.address_city + ' ' + realty.address_street}</option>
+                        return <MenuItem key={realty.id} value={realty.id}>{realty.address_city + ' ' + realty.address_street}</MenuItem>
                     })}
-                </select>
-            </label>
+                    </Select>
+                </FormControl>
+            </Box>
+
 
             <MyInput
               type="number"
@@ -471,7 +524,7 @@ const SuggestionPage = () => {
         </MyModal>
         <MyModal active={demandsModalActive} setActive={setDemandsModalActive}>
         <h2>Подходящие потребности</h2>
-            <ul>
+            <ul className="suggestion__focused">
               {demands.filter((item) => (selectedSuggestion.price <= item.max_price && selectedSuggestion.price >= item.min_price)
               || (item.max_price == null && selectedSuggestion.price >= item.min_price)
               || (item.min_price == null && item.min_price <= item.max_price)

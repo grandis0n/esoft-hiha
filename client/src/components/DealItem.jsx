@@ -6,8 +6,8 @@ import EditButton from "./UI/Button/Warn/EditButton";
 const DealItem = ({deal, openModal, openEditModal, openInfoModal}) => {
 
     return(
-        <div className="deal">
-            <ul className="deal__ul" onClick={() => openInfoModal(deal)}>
+        <div className="client">
+            <ul className="client__ul" onClick={() => openInfoModal(deal)}>
                 {deal.suggestion_id !== null && deal.suggestion_id !== ""
                 ? <li><h3>Id предложения:</h3> {deal.suggestion_id}</li>
                 : <li><h3>Id предложения:</h3> Не указан</li> 

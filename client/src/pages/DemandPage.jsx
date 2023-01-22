@@ -6,6 +6,11 @@ import DeleteButton from "../components/UI/Button/Delete/DeleteButton";
 import MyButton from "../components/UI/Button/Apply/MyButton";
 import MyInput from "../components/UI/Input/MyInput"
 import SuccessButton from "../components/UI/Button/Success/SuccessButton";
+import Box from '@mui/material/Box';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 
 
 const DemandPage = () => {
@@ -19,6 +24,7 @@ const DemandPage = () => {
     });
     const [clients, setClients] = useState([]);
     const [agents, setAgents] = useState([]);
+    const [typeOfRealty, setTypeOfRealty] = useState(1);
     const [realties, setRealties] = useState([]);
     const [suggestions, setSuggestions] = useState([]);
     const [isDemandsLoading, setIsDemandsLoading] = useState(false);
@@ -417,7 +423,7 @@ const DemandPage = () => {
     }
 
     return(
-        <div className="demands__container">
+        <div className="clients__container">
         <MyModal active={modalActive} setActive={setModalActive}>
           <h2 style={{textAlign: "center"}}>Удалить потребность?</h2>
           <DeleteButton onClick={()=> exit(delId)}>Delete</DeleteButton>
@@ -425,71 +431,150 @@ const DemandPage = () => {
         </MyModal>
         <MyModal active={modalCreateActive} setActive={setModalCreateActive}>
           <div className="createModal">
-            <label htmlFor="">
-                Выберите клиента
-                <select type="text" value={createDemand.client_id} onChange={e => setCreateDemand({...createDemand, client_id: e.target.value})}>
+          <Box sx={{ minWidth: 200 }}>
+                <FormControl fullWidth>
+                    <InputLabel id="demo-simple-select-label">Клиент</InputLabel>
+                    <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={createDemand.client_id||""}
+                    label="Age"
+                    className="box__margin"
+                    onChange={e => setCreateDemand({...createDemand, client_id: e.target.value})}
+                    >
                     {clients.map(client => {
-                        return <option key={client.id} value={client.id}>{client.first_name + ' ' + client.last_name}</option>
+                        return <MenuItem key={client.id} value={client.id}>{client.first_name + ' ' + client.last_name}</MenuItem>
                     })}
-                </select>
-            </label>
-
-            <label htmlFor="">
-            Выберите риелтора
-                <select type="text" value={createDemand.agent_id}onChange={e => setCreateDemand({...createDemand, agent_id: e.target.value})}>
+                    </Select>
+                </FormControl>
+            </Box>
+            <Box sx={{ minWidth: 200 }}>
+                <FormControl fullWidth>
+                    <InputLabel id="demo-simple-select-label">Риэлтор</InputLabel>
+                    <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={createDemand.agent_id||""}
+                    label="Age"
+                    className="box__margin"
+                    onChange={e => setCreateDemand({...createDemand, agent_id: e.target.value})}
+                    >
                     {agents.map(agent => {
-                        return <option key={agent.id} value={agent.id}>{agent.first_name + ' ' + agent.last_name}</option>
+                        return <MenuItem key={agent.id} value={agent.id}>{agent.first_name + ' ' + agent.last_name}</MenuItem>
                     })}
-                </select>
-            </label>
-
-            <label htmlFor="">
-            Выберите тип недвижимости
-                <select type="text" value={createDemand.type_id} onChange={e => setCreateDemand({...createDemand, type_id: e.target.value})}>
-                  <option value={1}>Квартира</option>
-                  <option value={2}>Дом</option>
-                  <option value={3}>Земля</option>
-                </select>
-            </label>
-
+                    </Select>
+                </FormControl>
+            </Box>
+            <Box sx={{ minWidth: 200 }}>
+                <FormControl fullWidth>
+                    <InputLabel id="demo-simple-select-label">Тип</InputLabel>
+                    <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={createDemand.type_id||""}
+                    label="Age"
+                    className="box__margin"
+                    onChange={(e) => {
+                      setCreateDemand({...createDemand, type_id: e.target.value})
+                      setTypeOfRealty(e.target.value);
+                    }}
+                    >
+                    <MenuItem value={1}>Квартира</MenuItem>
+                    <MenuItem value={2}>Дом</MenuItem>
+                    <MenuItem value={3}>Земля</MenuItem>
+                    </Select>
+                </FormControl>
+            </Box>
 
             <MyInput type="number" placeholder="Укажите минимальную цену" value={createDemand.min_price} onChange={e => setCreateDemand({...createDemand, min_price: e.target.value})}></MyInput>
             <MyInput type="number" placeholder="Укажите максимальную цену" value={createDemand.max_price} onChange={e => setCreateDemand({...createDemand, max_price: e.target.value})}></MyInput>
+
+            {typeOfRealty == 1
+                            ? <div className="createModal">
+                              <MyInput type="number" placeholder="Минимальная площадь" value={createDemand.min_area} onChange={e => setCreateDemand({...createDemand, min_area: e.target.value})}></MyInput>
+                              <MyInput type="number" placeholder="Максимальная площадь" value={createDemand.max_area} onChange={e => setCreateDemand({...createDemand, max_area: e.target.value})}></MyInput>
+                              <MyInput type="number" placeholder="Минимальное число комнат" value={createDemand.min_total_rooms} onChange={e => setCreateDemand({...createDemand, min_total_rooms: e.target.value})}></MyInput>
+                              <MyInput type="number" placeholder="Максимальное число комнат" value={createDemand.max_total_rooms} onChange={e => setCreateDemand({...createDemand, max_total_rooms: e.target.value})}></MyInput>
+                              <MyInput type="number" placeholder="Минимальный этаж" value={createDemand.min_floor} onChange={e => setCreateDemand({...createDemand, min_floor: e.target.value})}></MyInput>
+                              <MyInput type="number" placeholder="Максимальный этаж" value={createDemand.max_floor} onChange={e => setCreateDemand({...createDemand, max_floor: e.target.value})}></MyInput>
+                            </div>
+
+                            : typeOfRealty == 2
+                                ?  <div className="createModal">
+                              <MyInput type="number" placeholder="Минимальная площадь" value={createDemand.min_area} onChange={e => setCreateDemand({...createDemand, total_floors: e.target.value})}></MyInput>
+                              <MyInput type="number" placeholder="Максимальная площадь" value={createDemand.max_area} onChange={e => setCreateDemand({...createDemand, total_floors: e.target.value})}></MyInput>
+                              <MyInput type="number" placeholder="Минимальное число комнат" value={createDemand.min_total_rooms} onChange={e => setCreateDemand({...createDemand, min_total_rooms: e.target.value})}></MyInput>
+                              <MyInput type="number" placeholder="Максимальное число комнат" value={createDemand.max_total_rooms} onChange={e => setCreateDemand({...createDemand, max_total_rooms: e.target.value})}></MyInput>
+                              <MyInput type="number" placeholder="Минимальное число этажей" value={createDemand.min_total_floors} onChange={e => setCreateDemand({...createDemand, min_total_floors: e.target.value})}></MyInput>
+                              <MyInput type="number" placeholder="Максимальное число этажей" value={createDemand.max_total_floors} onChange={e => setCreateDemand({...createDemand, max_total_floors: e.target.value})}></MyInput>
+                            </div>
+                                : <div className="createModal">
+                                  <MyInput type="number" placeholder="Минимальная площадь" value={createDemand.min_area} onChange={e => setCreateDemand({...createDemand, min_area: e.target.value})}></MyInput>
+                                  <MyInput type="number" placeholder="Максимальная площадь" value={createDemand.max_area} onChange={e => setCreateDemand({...createDemand, max_area: e.target.value})}></MyInput>
+                                </div>
+                        }
 
             <SuccessButton onClick={()=>handleCreate()}>Создать потребность</SuccessButton>
             <MyButton onClick={()=>setModalCreateActive(false)}>Отмена</MyButton>
           </div>
         </MyModal>
         <MyModal active={editModalActive} setActive={setEditModalActive}>
-          <div className="editModal">
-
-          <label htmlFor="">
-                Выберите клиента
-                <select type="text" value={demandToEdit.client_id} onChange={e => setDemandToEdit({...demandToEdit, client_id: e.target.value})}>
+          <div className="createModal">
+          <Box sx={{ minWidth: 200 }}>
+                <FormControl fullWidth>
+                    <InputLabel id="demo-simple-select-label">Клиент</InputLabel>
+                    <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={demandToEdit.client_id||""}
+                    label="Age"
+                    className="box__margin"
+                    onChange={e => setDemandToEdit({...demandToEdit, client_id: e.target.value})}
+                    >
                     {clients.map(client => {
-                        return <option key={client.id} value={client.id}>{client.first_name + ' ' + client.last_name}</option>
+                        return <MenuItem key={client.id} value={client.id}>{client.first_name + ' ' + client.last_name}</MenuItem>
                     })}
-                </select>
-            </label>
+                    </Select>
+                </FormControl>
+            </Box>
 
-
-            <label htmlFor="">
-                Выберите риелтора
-                <select type="text" value={demandToEdit.agent_id} onChange={e => setDemandToEdit({...demandToEdit, agent_id: e.target.value})}>
+            <Box sx={{ minWidth: 200 }}>
+                <FormControl fullWidth>
+                    <InputLabel id="demo-simple-select-label">Риэлтор</InputLabel>
+                    <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={demandToEdit.agent_id||""}
+                    label="Age"
+                    className="box__margin"
+                    onChange={e => setDemandToEdit({...demandToEdit, agent_id: e.target.value})}
+                    >
                     {agents.map(agent => {
-                        return <option key={agent.id} value={agent.id}>{agent.first_name + ' ' + agent.last_name}</option>
+                        return <MenuItem key={agent.id} value={agent.id}>{agent.first_name + ' ' + agent.last_name}</MenuItem>
                     })}
-                </select>
-            </label>
-
-            <label htmlFor="">
-                Выберите тип недвижимости
-                <select type="text"  value={demandToEdit.realty_id} onChange={e => setDemandToEdit({...demandToEdit, type_id: e.target.value})}>
-                        <option value={1}>Квартира</option>
-                        <option value={2}>Дом</option>
-                        <option value={3}>Земля</option>
-                </select>
-            </label>
+                    </Select>
+                </FormControl>
+            </Box>
+            <Box sx={{ minWidth: 200 }}>
+                <FormControl fullWidth>
+                    <InputLabel id="demo-simple-select-label">Тип</InputLabel>
+                    <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={demandToEdit.type_id||""}
+                    label="Age"
+                    className="box__margin"
+                    onChange={(e) => {
+                      setDemandToEdit({...demandToEdit, type_id: e.target.value})
+                      setTypeOfRealty(e.target.value);
+                      }}
+                    >
+                        <MenuItem value={1}>Квартира</MenuItem>
+                        <MenuItem value={2}>Дом</MenuItem>
+                        <MenuItem value={3}>Земля</MenuItem>
+                    </Select>
+                </FormControl>
+            </Box>
 
             <MyInput
               type="number"
@@ -505,6 +590,31 @@ const DemandPage = () => {
               onChange={e => setDemandToEdit({...demandToEdit, max_price: e.target.value})}
             />
 
+                    {typeOfRealty == 1
+                            ? <div className="createModal">
+                              <MyInput type="number" placeholder="Минимальная площадь" value={demandToEdit.min_area} onChange={e => setDemandToEdit({...demandToEdit, min_area: e.target.value})}></MyInput>
+                              <MyInput type="number" placeholder="Максимальная площадь" value={demandToEdit.max_area} onChange={e => setDemandToEdit({...demandToEdit, max_area: e.target.value})}></MyInput>
+                              <MyInput type="number" placeholder="Минимальное число комнат" value={demandToEdit.min_total_rooms} onChange={e => setDemandToEdit({...demandToEdit, min_total_rooms: e.target.value})}></MyInput>
+                              <MyInput type="number" placeholder="Максимальное число комнат" value={demandToEdit.max_total_rooms} onChange={e => setDemandToEdit({...demandToEdit, max_total_rooms: e.target.value})}></MyInput>
+                              <MyInput type="number" placeholder="Минимальный этаж" value={demandToEdit.min_floor} onChange={e => setDemandToEdit({...demandToEdit, min_floor: e.target.value})}></MyInput>
+                              <MyInput type="number" placeholder="Максимальный этаж" value={demandToEdit.max_floor} onChange={e => setDemandToEdit({...demandToEdit, max_floor: e.target.value})}></MyInput>
+                            </div>
+
+                            : typeOfRealty == 2
+                                ?  <div className="createModal">
+                              <MyInput type="number" placeholder="Минимальная площадь" value={demandToEdit.min_area} onChange={e => setDemandToEdit({...demandToEdit, min_area: e.target.value})}></MyInput>
+                              <MyInput type="number" placeholder="Максимальная площадь" value={demandToEdit.max_area} onChange={e => setDemandToEdit({...demandToEdit, max_area: e.target.value})}></MyInput>
+                              <MyInput type="number" placeholder="Минимальное число комнат" value={demandToEdit.min_total_rooms} onChange={e => setDemandToEdit({...demandToEdit, min_total_rooms: e.target.value})}></MyInput>
+                              <MyInput type="number" placeholder="Максимальное число комнат" value={demandToEdit.max_total_rooms} onChange={e => setDemandToEdit({...demandToEdit, max_total_rooms: e.target.value})}></MyInput>
+                              <MyInput type="number" placeholder="Минимальное число этажей" value={demandToEdit.min_total_floors} onChange={e => setDemandToEdit({...demandToEdit, min_total_floors: e.target.value})}></MyInput>
+                              <MyInput type="number" placeholder="Максимальное число этажей" value={demandToEdit.max_total_floors} onChange={e => setDemandToEdit({...demandToEdit, max_total_floors: e.target.value})}></MyInput>
+                            </div>
+                                : <div className="createModal">
+                                  <MyInput type="number" placeholder="Минимальная площадь" value={demandToEdit.min_area} onChange={e => setDemandToEdit({...demandToEdit, min_area: e.target.value})}></MyInput>
+                                  <MyInput type="number" placeholder="Максимальная площадь" value={demandToEdit.max_area} onChange={e => setDemandToEdit({...demandToEdit, max_area: e.target.value})}></MyInput>
+                                </div>
+                        }
+
             <SuccessButton onClick={()=>handleEdit()}>Редактировать потребность</SuccessButton>
             <MyButton onClick={()=>setEditModalActive(false)}>Отмена</MyButton>
           </div>
@@ -516,7 +626,7 @@ const DemandPage = () => {
 
         <MyModal active={suggestionsModalActive} setActive={setSuggestionsModalActive}>
           <h2>Подходящие предложения</h2>
-          <ul>
+          <ul className="suggestion__focused">
               {suggestions.filter((item) => (selectedDemand.min_price <= item.price && selectedDemand.max_price >= item.price)
               || (selectedDemand.max_price == null && item.price >= selectedDemand.min_price)
               || (selectedDemand.min_price == null && item.price <= selectedDemand.max_price)

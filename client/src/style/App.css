@@ -35,6 +35,7 @@ h3{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 20px;
+    margin-bottom: 50px;
 }
 
 .client{
@@ -71,7 +72,29 @@ h3{
     align-items: center;
 }
 
+
+
 .search__container{
     display: flex;
     flex-direction: row;
+}
+
+.filter{
+    display: flex;
+    flex-direction: row;
+}
+
+.box__margin{
+    margin-bottom: 10px;
+}
+
+.filtered__client{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.suggestion__focused li:hover{
+    background-color: #78909C;
+    color: white;
 }

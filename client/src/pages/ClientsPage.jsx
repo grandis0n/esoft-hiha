@@ -379,18 +379,20 @@ const ClientsPage = () => {
             <h2>{notification}</h2>
           </MyModal>
           <MyModal active={sugdemModalActive} setActive={setSugDemModalActive}>
-            <h2>Предложения</h2>
-            <ul>
-              {suggestions.filter((item) => item.client_id === selectedClient).map((el) => {
-                return <li>{el.id}</li>
-              })}
-            </ul>
-            <h2>Потребности</h2>
-            <ul>
-            {demands.filter((item) => item.client_id === selectedClient).map((el) => {
-                return <li>{el.id}</li>
-              })}
-            </ul>
+            <div className="filtered__client">
+              <h2>Предложения</h2>
+              <ul>
+                {suggestions.filter((item) => item.client_id === selectedClient).map((el) => {
+                  return <li>{el.id}</li>
+                })}
+              </ul>
+              <h2>Потребности</h2>
+              <ul>
+              {demands.filter((item) => item.client_id === selectedClient).map((el) => {
+                  return <li>{el.id}</li>
+                })}
+              </ul>
+              </div>
           </MyModal>
           <MyButton onClick={()=>setModalCreateActive(true)}>Создать клиента</MyButton>
           {isClientsLoading || !clients

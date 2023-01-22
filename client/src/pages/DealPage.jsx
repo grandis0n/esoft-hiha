@@ -6,6 +6,11 @@ import DeleteButton from "../components/UI/Button/Delete/DeleteButton";
 import MyButton from "../components/UI/Button/Apply/MyButton";
 import MyInput from "../components/UI/Input/MyInput"
 import SuccessButton from "../components/UI/Button/Success/SuccessButton";
+import Box from '@mui/material/Box';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 
 const DealPage = () => {
     const [deals, setDeals] = useState([]);
@@ -335,23 +340,7 @@ const DealPage = () => {
 
 
     return(
-        <div className="deals__container">
-          <div className="search__container">
-            <MyInput
-              type="text"
-              placeholder="Id предложения"
-              value={searchDeal.suggestion_id}
-              onChange={e => setSearchDeal({...searchDeal, suggestion_id: e.target.value})}
-            />
-            <MyInput
-              type="text"
-              placeholder="Id потребности"
-              value={searchDeal.demand_id}
-              onChange={e => setSearchDeal({...searchDeal, demand_id: e.target.value})}
-            />
-            <MyButton onClick={()=>searchDeals()}>Поиск</MyButton>
-            <DeleteButton onClick={()=>handleOutOfSearch()}>Сбросить параметры поиска</DeleteButton>
-          </div>
+        <div className="clients__container">
           <MyModal active={modalActive} setActive={setModalActive}>
             <h2 style={{textAlign: "center"}}>Удалить сделку?</h2>
             <DeleteButton onClick={()=> exit(delId)}>Delete</DeleteButton>
@@ -370,47 +359,83 @@ const DealPage = () => {
 
           <MyModal active={modalCreateActive} setActive={setModalCreateActive}>
             <div className="createModal">
-              <label htmlFor="">
-                  Выберите предложение
-                  <select type="text" value={createDeal.suggestion_id} onChange={e => setCreateDeal({...createDeal, suggestion_id: e.target.value})}>
+            <Box sx={{ minWidth: 200 }}>
+                <FormControl fullWidth>
+                    <InputLabel id="demo-simple-select-label">Предложение</InputLabel>
+                    <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={createDeal.suggestion_id||""}
+                    label="Age"
+                    className="box__margin"
+                    onChange={e => setCreateDeal({...createDeal, suggestion_id: e.target.value})}
+                    >
                       {suggestions.filter(el => el.served !== true).map(suggestion => {
-                          return <option value={suggestion.id} key={suggestion.id}>{suggestion.id}</option>
+                          return <MenuItem value={suggestion.id} key={suggestion.id}>{suggestion.id}</MenuItem>
                      })}
-                  </select>
-              </label>
+                    </Select>
+                </FormControl>
+            </Box>
 
-              <label htmlFor="">
-              Выберите потребность
-                  <select type="text" value={createDeal.demand_id} onChange={e => setCreateDeal({...createDeal, demand_id: e.target.value})}>
+            <Box sx={{ minWidth: 200 }}>
+                <FormControl fullWidth>
+                    <InputLabel id="demo-simple-select-label">Потребность</InputLabel>
+                    <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={createDeal.demand_id||""}
+                    label="Age"
+                    className="box__margin"
+                    onChange={e => setCreateDeal({...createDeal, demand_id: e.target.value})}
+                    >
                       {demands.filter(el => el.served !== true).map(demand => {
-                          return <option key={demand.id} value={demand.id}>{demand.id}</option>
+                          return <MenuItem key={demand.id} value={demand.id}>{demand.id}</MenuItem>
                       })}
-                  </select>
-              </label>
+                    </Select>
+                </FormControl>
+            </Box>
+
               <SuccessButton onClick={()=>handleCreate()}>Создать сделку</SuccessButton>
               <MyButton onClick={()=>setModalCreateActive(false)}>Отмена</MyButton>
             </div>
           </MyModal>
           <MyModal active={editModalActive} setActive={setEditModalActive}>
-            <div className="editModal">
-              <label htmlFor="">
-                  Выберите предложение
-                  <select type="text" value={dealToEdit.suggestion_id} onChange={e => setDealToEdit({...dealToEdit, suggestion_id: e.target.value})}>
+            <div className="createModal">
+            <Box sx={{ minWidth: 200 }}>
+                <FormControl fullWidth>
+                    <InputLabel id="demo-simple-select-label">Предложение</InputLabel>
+                    <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={dealToEdit.suggestion_id||""}
+                    label="Age"
+                    className="box__margin"
+                    onChange={e => setDealToEdit({...dealToEdit, suggestion_id: e.target.value})}
+                    >
                       {suggestions.filter(el => el.served !== true).map(suggestion => {
-                          return <option key={suggestion.id} value={suggestion.id}>{suggestion.id}</option>
+                          return <MenuItem key={suggestion.id} value={suggestion.id}>{suggestion.id}</MenuItem>
                       })}
-                  </select>
-              </label>
-
-
-              <label htmlFor="">
-                  Выберите потребность
-                  <select type="text" value={dealToEdit.demand_id} onChange={e => setDealToEdit({...dealToEdit, demand_id: e.target.value})}>
+                    </Select>
+                </FormControl>
+            </Box>
+            <Box sx={{ minWidth: 200 }}>
+                <FormControl fullWidth>
+                    <InputLabel id="demo-simple-select-label">Потребность</InputLabel>
+                    <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={dealToEdit.demand_id||""}
+                    label="Age"
+                    className="box__margin"
+                    onChange={e => setDealToEdit({...dealToEdit, demand_id: e.target.value})}
+                    >
                       {demands.filter(el => el.served !== true).map(demand => {
-                          return <option key={demand.id} value={demand.id}>{demand.id}</option>
+                          return <MenuItem key={demand.id} value={demand.id}>{demand.id}</MenuItem>
                       })}
-                  </select>
-              </label>
+                    </Select>
+                </FormControl>
+            </Box>
+
               <SuccessButton onClick={()=>handleEdit()}>Редактировать сделку</SuccessButton>
               <MyButton onClick={()=>setEditModalActive(false)}>Отмена</MyButton>
             </div>

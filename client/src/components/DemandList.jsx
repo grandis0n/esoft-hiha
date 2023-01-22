@@ -4,7 +4,7 @@ import DemandItem from "./DemandItem";
 
 const DemandList = ({demands, openModal, openEditModal, openSuggestionsModal}) => {
     return(
-        <div className="demands__list">
+        <div className="clients__list">
             {demands.map((demand) => 
               <DemandItem demand={demand} openModal={openModal} openEditModal={openEditModal} openSuggestionsModal={openSuggestionsModal} key={demand.id}/>
             ) }
