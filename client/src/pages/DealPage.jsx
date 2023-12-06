@@ -59,7 +59,7 @@ const DealPage = () => {
 
       let body = JSON.stringify({})
       
-      const fdeals = await fetch("https://esoft.onrender.com/api/deal/all", {
+      const fdeals = await fetch("https://esoft-hiha.onrender.com/api/deal/all", {
         method: "POST",
         headers: {
           'Content-Type': 'application/json'
@@ -78,7 +78,7 @@ const DealPage = () => {
 
       let body = JSON.stringify({})
       
-      const fsuggestions = await fetch("https://esoft.onrender.com/api/suggestion/all", {
+      const fsuggestions = await fetch("https://esoft-hiha.onrender.com/api/suggestion/all", {
         method: "POST",
         headers: {
           'Content-Type': 'application/json'
@@ -96,7 +96,7 @@ const DealPage = () => {
 
       let body = JSON.stringify({})
       
-      const fdemands = await fetch("https://esoft.onrender.com/api/demand/all", {
+      const fdemands = await fetch("https://esoft-hiha.onrender.com/api/demand/all", {
         method: "POST",
         headers: {
           'Content-Type': 'application/json'
@@ -112,7 +112,7 @@ const DealPage = () => {
 
 
     async function deleteDeal(id){
-      const result = await fetch('https://esoft.onrender.com/api/deal/delete/' + String(id), {method: 'DELETE'})
+      const result = await fetch('https://esoft-hiha.onrender.com/api/deal/delete/' + String(id), {method: 'DELETE'})
         .then((response1) => {
           if (response1 && response1 !== undefined){
             return response1.json();
@@ -141,7 +141,7 @@ const DealPage = () => {
         body.demand_id = dealToEdit.demand_id
       }
 
-      const editedDeal = await fetch("https://esoft.onrender.com/api/deal/update/" + String(editId), {
+      const editedDeal = await fetch("https://esoft-hiha.onrender.com/api/deal/update/" + String(editId), {
         method: "PUT",
         headers: {
           'Content-Type': 'application/json'
@@ -174,7 +174,7 @@ const DealPage = () => {
       })
 
       console.log(body)
-      await fetch('https://esoft.onrender.com/api/suggestion/update/' + String(suggestion_id), {
+      await fetch('https://esoft-hiha.onrender.com/api/suggestion/update/' + String(suggestion_id), {
         method: "PUT",
         headers: {
           'Content-Type': 'application/json'
@@ -191,7 +191,7 @@ const DealPage = () => {
         served:false
       })
 
-      await fetch('https://esoft.onrender.com/api/suggestion/update/' + String(suggestion_id), {
+      await fetch('https://esoft-hiha.onrender.com/api/suggestion/update/' + String(suggestion_id), {
         method: "PUT",
         headers: {
           'Content-Type': 'application/json'
@@ -209,7 +209,7 @@ const DealPage = () => {
         served:true
       })
       console.log(body)
-      await fetch('https://esoft.onrender.com/api/demand/update/' + String(demand_id), {
+      await fetch('https://esoft-hiha.onrender.com/api/demand/update/' + String(demand_id), {
         method: "PUT",
         headers: {
           'Content-Type': 'application/json'
@@ -227,7 +227,7 @@ const DealPage = () => {
         served:false
       })
 
-      await fetch('https://esoft.onrender.com/api/demand/update/' + String(demand_id), {
+      await fetch('https://esoft-hiha.onrender.com/api/demand/update/' + String(demand_id), {
         method: "PUT",
         headers: {
           'Content-Type': 'application/json'
@@ -250,7 +250,7 @@ const DealPage = () => {
       
 
       
-      const createResponse = await fetch('https://esoft.onrender.com/api/deal/create', {
+      const createResponse = await fetch('https://esoft-hiha.onrender.com/api/deal/create', {
         method: "POST",
         headers: {
           'Content-Type': 'application/json'
@@ -282,7 +282,7 @@ const DealPage = () => {
 
     async function searchDeals(){
 
-      const sdeals = await fetch("https://esoft.onrender.com/api/deal/all", {
+      const sdeals = await fetch("https://esoft-hiha.onrender.com/api/deal/all", {
         method: "POST",
         headers: {
           'Content-Type': 'application/json'

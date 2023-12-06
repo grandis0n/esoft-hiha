@@ -43,7 +43,7 @@ export default function AuthScreens({check}) {
         }
         body = JSON.stringify(body)
         let status
-        const resData = await fetch("https://esoft.onrender.com/api/agent/all", {
+        const resData = await fetch("https://esoft-hiha.onrender.com/api/agent/all", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

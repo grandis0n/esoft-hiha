@@ -108,7 +108,7 @@ export default function CreateEventScreen({exit, user, setIsCreateScreen}) {
             }
             body = JSON.stringify(body)
             let status
-            const resData = await fetch("https://esoft.onrender.com/api/event/create", {
+            const resData = await fetch("https://esoft-hiha.onrender.com/api/event/create", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

@@ -55,7 +55,7 @@ const SuggestionPage = () => {
 
       let body = JSON.stringify({})
       
-      const fsuggestions = await fetch("https://esoft.onrender.com/api/suggestion/all", {
+      const fsuggestions = await fetch("https://esoft-hiha.onrender.com/api/suggestion/all", {
         method: "POST",
         headers: {
           'Content-Type': 'application/json'
@@ -78,7 +78,7 @@ const SuggestionPage = () => {
           last_name: ""
         })
         
-        const fclients= await fetch("https://esoft.onrender.com/api/client/all", {
+        const fclients= await fetch("https://esoft-hiha.onrender.com/api/client/all", {
           method: "POST",
           headers: {
             'Content-Type': 'application/json'
@@ -101,7 +101,7 @@ const SuggestionPage = () => {
           last_name: ""
         })
         
-        const fagents= await fetch("https://esoft.onrender.com/api/agent/all", {
+        const fagents= await fetch("https://esoft-hiha.onrender.com/api/agent/all", {
           method: "POST",
           headers: {
             'Content-Type': 'application/json'
@@ -120,7 +120,7 @@ const SuggestionPage = () => {
   
         let body = JSON.stringify({})
         
-        const frealties= await fetch("https://esoft.onrender.com/api/realty/all", {
+        const frealties= await fetch("https://esoft-hiha.onrender.com/api/realty/all", {
           method: "POST",
           headers: {
             'Content-Type': 'application/json'
@@ -138,7 +138,7 @@ const SuggestionPage = () => {
   
         let body = JSON.stringify({})
         
-        const fdemands = await fetch("https://esoft.onrender.com/api/demand/all", {
+        const fdemands = await fetch("https://esoft-hiha.onrender.com/api/demand/all", {
           method: "POST",
           headers: {
             'Content-Type': 'application/json'
@@ -156,7 +156,7 @@ const SuggestionPage = () => {
     async function deleteSuggestion(id){
         const dsuggestion = suggestions.find((item) => item.id == id)
         if(dsuggestion.served === false) {
-            const result = await fetch('https://esoft.onrender.com/api/suggestion/delete/' + String(id), {method: 'DELETE'})
+            const result = await fetch('https://esoft-hiha.onrender.com/api/suggestion/delete/' + String(id), {method: 'DELETE'})
             .then((response1) => {
               if (response1 && response1 !== undefined){
                 return response1.json();
@@ -193,7 +193,7 @@ const SuggestionPage = () => {
         body.price = suggestionToEdit.price
       }
       
-      const editedSuggestion = await fetch("https://esoft.onrender.com/api/suggestion/update/" + String(editId), {
+      const editedSuggestion = await fetch("https://esoft-hiha.onrender.com/api/suggestion/update/" + String(editId), {
         method: "PUT",
         headers: {
           'Content-Type': 'application/json'
@@ -232,7 +232,7 @@ const SuggestionPage = () => {
           price: createSuggestion.price,
       })}
       
-      const createResponse = await fetch('https://esoft.onrender.com/api/suggestion/create', {
+      const createResponse = await fetch('https://esoft-hiha.onrender.com/api/suggestion/create', {
         method: "POST",
         headers: {
           'Content-Type': 'application/json'
@@ -264,7 +264,7 @@ const SuggestionPage = () => {
       let body
       body.served = true
 
-      await fetch('https://esoft.onrender.com/api/suggestion/update/' + String(suggestion_id), {
+      await fetch('https://esoft-hiha.onrender.com/api/suggestion/update/' + String(suggestion_id), {
         method: "PUT",
         headers: {
           'Content-Type': 'application/json'
@@ -282,7 +282,7 @@ const SuggestionPage = () => {
         served:true
       })
 
-      await fetch('https://esoft.onrender.com/api/demand/update/' + String(demand_id), {
+      await fetch('https://esoft-hiha.onrender.com/api/demand/update/' + String(demand_id), {
         method: "PUT",
         headers: {
           'Content-Type': 'application/json'
@@ -312,7 +312,7 @@ const SuggestionPage = () => {
       console.log(selectedSuggestion.id)
       console.log(selectedDemand.id)
 
-      const createResponse = await fetch('https://esoft.onrender.com/api/deal/create', {
+      const createResponse = await fetch('https://esoft-hiha.onrender.com/api/deal/create', {
         method: "POST",
         headers: {
           'Content-Type': 'application/json'

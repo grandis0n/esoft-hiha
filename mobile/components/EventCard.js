@@ -42,7 +42,7 @@ const EventCard = ({event, getEvents}) => {
     const deleteEvent = async (id) => {
         console.log(id)
         let status
-        const resData = await fetch(`https://esoft.onrender.com/api/event/delete/${id}`, {
+        const resData = await fetch(`https://esoft-hiha.onrender.com/api/event/delete/${id}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json"

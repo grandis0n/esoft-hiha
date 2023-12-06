@@ -50,7 +50,7 @@ const ClientsPage = () => {
         last_name: ""
       })
       
-      const fclients = await fetch("https://esoft.onrender.com/api/client/all", {
+      const fclients = await fetch("https://esoft-hiha.onrender.com/api/client/all", {
         method: "POST",
         headers: {
           'Content-Type': 'application/json'
@@ -73,7 +73,7 @@ const ClientsPage = () => {
         last_name: ""
       })
       
-      const fsuggestions = await fetch("https://esoft.onrender.com/api/suggestion/all", {
+      const fsuggestions = await fetch("https://esoft-hiha.onrender.com/api/suggestion/all", {
         method: "POST",
         headers: {
           'Content-Type': 'application/json'
@@ -95,7 +95,7 @@ const ClientsPage = () => {
         last_name: ""
       })
       
-      const fdemands = await fetch("https://esoft.onrender.com/api/demand/all", {
+      const fdemands = await fetch("https://esoft-hiha.onrender.com/api/demand/all", {
         method: "POST",
         headers: {
           'Content-Type': 'application/json'
@@ -110,7 +110,7 @@ const ClientsPage = () => {
     };
 
     async function deleteClient(id){
-      const result = await fetch('https://esoft.onrender.com/api/client/delete/' + String(id), {method: 'DELETE'})
+      const result = await fetch('https://esoft-hiha.onrender.com/api/client/delete/' + String(id), {method: 'DELETE'})
         .then((response1) => {
           if (response1 && response1 !== undefined){
             return response1.json();
@@ -146,7 +146,7 @@ const ClientsPage = () => {
         body.last_name = clientToEdit.last_name
       }
 
-      const editedClient = await fetch("https://esoft.onrender.com/api/client/update/" + String(editId), {
+      const editedClient = await fetch("https://esoft-hiha.onrender.com/api/client/update/" + String(editId), {
         method: "PUT",
         headers: {
           'Content-Type': 'application/json'
@@ -203,7 +203,7 @@ const ClientsPage = () => {
   
 
       
-      const createResponse = await fetch('https://esoft.onrender.com/api/client/create', {
+      const createResponse = await fetch('https://esoft-hiha.onrender.com/api/client/create', {
         method: "POST",
         headers: {
           'Content-Type': 'application/json'
@@ -233,7 +233,7 @@ const ClientsPage = () => {
 
     async function searchClients(){
 
-      const sclients = await fetch("https://esoft.onrender.com/api/client/all", {
+      const sclients = await fetch("https://esoft-hiha.onrender.com/api/client/all", {
         method: "POST",
         headers: {
           'Content-Type': 'application/json'

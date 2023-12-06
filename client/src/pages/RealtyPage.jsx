@@ -43,7 +43,7 @@ const RealtyPage = () => {
   
         let body = JSON.stringify({})
         
-        const frealtys = await fetch("https://esoft.onrender.com/api/realty/all", {
+        const frealtys = await fetch("https://esoft-hiha.onrender.com/api/realty/all", {
           method: "POST",
           headers: {
             'Content-Type': 'application/json'
@@ -66,7 +66,7 @@ const RealtyPage = () => {
         }
         
         
-        const filterRealtys = await fetch("https://esoft.onrender.com/api/realty/all", {
+        const filterRealtys = await fetch("https://esoft-hiha.onrender.com/api/realty/all", {
           method: "POST",
           headers: {
             'Content-Type': 'application/json'
@@ -88,7 +88,7 @@ const RealtyPage = () => {
         body.coordinates = a.map(el=>el.split(',').map(el=>Number(el)))
         
         
-        const CoordinatesRealtys = await fetch("https://esoft.onrender.com/api/realty/all", {
+        const CoordinatesRealtys = await fetch("https://esoft-hiha.onrender.com/api/realty/all", {
           method: "POST",
           headers: {
             'Content-Type': 'application/json'
@@ -103,7 +103,7 @@ const RealtyPage = () => {
 
 
     async function deleteRealty(id){
-    const result = await fetch('https://esoft.onrender.com/api/realty/delete/' + String(id), {method: 'DELETE'})
+    const result = await fetch('https://esoft-hiha.onrender.com/api/realty/delete/' + String(id), {method: 'DELETE'})
         .then((response1) => {
         if (response1 && response1 !== undefined){
             return response1.json();
@@ -160,7 +160,7 @@ const RealtyPage = () => {
     }
 
     
-    const createResponse = await fetch('https://esoft.onrender.com/api/realty/create', {
+    const createResponse = await fetch('https://esoft-hiha.onrender.com/api/realty/create', {
         method: "POST",
         headers: {
         'Content-Type': 'application/json'
@@ -224,7 +224,7 @@ const RealtyPage = () => {
         }
         body.type_id = typeOfRealty
         console.log(body)
-        const editedRealty = await fetch("https://esoft.onrender.com/api/realty/update/" + String(editId), {
+        const editedRealty = await fetch("https://esoft-hiha.onrender.com/api/realty/update/" + String(editId), {
           method: "PUT",
           headers: {
             'Content-Type': 'application/json'
@@ -253,7 +253,7 @@ const RealtyPage = () => {
 
     async function searchRealtys(){
 
-    const srealtys = await fetch("https://esoft.onrender.com/api/realty/all", {
+    const srealtys = await fetch("https://esoft-hiha.onrender.com/api/realty/all", {
         method: "POST",
         headers: {
         'Content-Type': 'application/json'

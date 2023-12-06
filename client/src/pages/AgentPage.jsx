@@ -49,7 +49,7 @@ const AgentPage = () => {
         last_name: ""
       })
       
-      const fagents = await fetch("https://esoft.onrender.com/api/agent/all", {
+      const fagents = await fetch("https://esoft-hiha.onrender.com/api/agent/all", {
         method: "POST",
         headers: {
           'Content-Type': 'application/json'
@@ -72,7 +72,7 @@ const AgentPage = () => {
         last_name: ""
       })
       
-      const fsuggestions = await fetch("https://esoft.onrender.com/api/suggestion/all", {
+      const fsuggestions = await fetch("https://esoft-hiha.onrender.com/api/suggestion/all", {
         method: "POST",
         headers: {
           'Content-Type': 'application/json'
@@ -94,7 +94,7 @@ const AgentPage = () => {
         last_name: ""
       })
       
-      const fdemands = await fetch("https://esoft.onrender.com/api/demand/all", {
+      const fdemands = await fetch("https://esoft-hiha.onrender.com/api/demand/all", {
         method: "POST",
         headers: {
           'Content-Type': 'application/json'
@@ -109,7 +109,7 @@ const AgentPage = () => {
     };
 
     async function deleteAgent(id){
-      const result = await fetch('https://esoft.onrender.com/api/agent/delete/' + String(id), {method: 'DELETE'})
+      const result = await fetch('https://esoft-hiha.onrender.com/api/agent/delete/' + String(id), {method: 'DELETE'})
         .then((response1) => {
           if (response1 && response1 !== undefined){
             return response1.json();
@@ -143,7 +143,7 @@ const AgentPage = () => {
         body.deal_share = agentToEdit.deal_share
       }
 
-      const editedAgent = await fetch("https://esoft.onrender.com/api/agent/update/" + String(editId), {
+      const editedAgent = await fetch("https://esoft-hiha.onrender.com/api/agent/update/" + String(editId), {
         method: "PUT",
         headers: {
           'Content-Type': 'application/json'
@@ -182,7 +182,7 @@ const AgentPage = () => {
   
 
       
-      const createResponse = await fetch('https://esoft.onrender.com/api/agent/create', {
+      const createResponse = await fetch('https://esoft-hiha.onrender.com/api/agent/create', {
         method: "POST",
         headers: {
           'Content-Type': 'application/json'
@@ -212,7 +212,7 @@ const AgentPage = () => {
 
     async function searchAgents(){
 
-      const sagents = await fetch("https://esoft.onrender.com/api/agent/all", {
+      const sagents = await fetch("https://esoft-hiha.onrender.com/api/agent/all", {
         method: "POST",
         headers: {
           'Content-Type': 'application/json'

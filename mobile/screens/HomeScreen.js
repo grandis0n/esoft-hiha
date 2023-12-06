@@ -49,7 +49,7 @@ export default function HomeScreen({exit, user, setIsCreateScreen}) {
         }
         body = JSON.stringify(body)
         let status
-        const resData = await fetch("https://esoft.onrender.com/api/event/", {
+        const resData = await fetch("https://esoft-hiha.onrender.com/api/event/", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
