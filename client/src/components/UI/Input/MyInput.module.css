@@ -3,22 +3,24 @@
     color: #ECEFF1;
     height: 36px;
     width: 250px;
+    margin-top: 15px;
+    margin-right: 10px;
+    margin-bottom: 0px;
     border: 1.5px solid #ECEFF1; 
     padding: 10px;
-    margin: 10px;
     outline-color: #04A0FF;
 }
 
 .myInpt:hover{
-    background-color: #CFD8DC;
+    background-color: #f1f3f6;
 }
 
 .myInpt:focus{
     caret-color: #04A0FF;
-    color: #37474F;
+    color: #f1f3f6;
 }
 
 .myInpt:valid{
-    color: #37474F;
-    border-color: #CFD8DC;
+    color: #5d6977;
+    border-color: #6e7a81;
 }

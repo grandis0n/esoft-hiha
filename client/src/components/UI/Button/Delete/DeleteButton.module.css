@@ -1,15 +1,18 @@
 .MyDlt{
-    background-color: #FF1744;
+    background-color: #ff3763;
     color: white;
-    margin: 15px;
+    margin-left: 10px;
+    margin-right: 5px;
+    margin-top: 12px;
+    margin-bottom: 15px;
     padding: 10px;
-    height: 36px;
+    height: 40px;
     border-radius: 3px;
     border: none;
 }
 
 .MyDlt:hover {
-    background-color: #E3002C;
+    background-color: #ff2424;
 }
 
 .MyDlt:disabled{

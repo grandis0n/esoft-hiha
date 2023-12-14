@@ -342,7 +342,7 @@ const RealtyPage = () => {
                 <DeleteButton onClick={()=>handleOutOfSearch()}>Сбросить параметры поиска</DeleteButton>
             </div>
             <div className="filter">
-                <Box sx={{ minWidth: 250 }}>
+                <Box sx={{ minWidth: 250, marginRight: '10px', marginTop: '5px'}}>
                     <FormControl fullWidth>
                         <InputLabel id="demo-simple-select-label">Тип</InputLabel>
                         <Select

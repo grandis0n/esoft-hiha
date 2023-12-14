@@ -1,9 +1,9 @@
 .MyScs{
-    background-color: #00BFA5;
+    background-color: #01c0aa;
     color: white;
-    margin: 15px;
+    margin-top: 10px;
     padding: 10px;
-    height: 36px;
+    height: 40px;
     border-radius: 3px;
     border: none;
 }
@@ -13,6 +13,6 @@
 }
 
 .MyScs:disabled{
-    background-color: #00D9BB;
+    background-color: #ffffff;
     color: #CFD8DC;
 }

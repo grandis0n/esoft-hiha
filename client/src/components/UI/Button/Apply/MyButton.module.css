@@ -1,9 +1,11 @@
 .myBtn{
     background-color: #0091EA;
     color: white;
-    margin: 15px;
+    margin-left: 5px;
+    margin-top: 12px;
+    margin-bottom: 15px;
     padding: 10px;
-    height: 36px;
+    height: 40px;
     border-radius: 3px;
     border: none;
 }

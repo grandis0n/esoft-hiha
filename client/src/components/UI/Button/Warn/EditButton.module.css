@@ -1,15 +1,17 @@
 .MyEdt{
-    background-color: #FF9100;
+    background-color: #79be03;
     color: white;
-    margin: 15px;
+    margin-top: 12px;
+    margin-bottom: 15px;
     padding: 10px;
-    height: 36px;
+    height: 40px;
+    width: 66px;
     border-radius: 3px;
     border: none;
 }
 
 .MyEdt:hover {
-    background-color: #E68300;
+    background-color: #68a400;
 }
 
 .MyEdt:disabled{
