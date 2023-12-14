@@ -17,13 +17,15 @@ export default function HomeScreen({exit, user, setIsCreateScreen}) {
         block__header: {
             width: "100%",
             padding: 0,
+            marginTop: 30,
             display: "flex",
             flexDirection: "row",
             alignItems: "center",
             justifyContent: "space-between"
         },
         block__header__heading: {
-            fontSize: 20
+            fontSize: 30,
+            fontWeight: 'bold',
         },
         block__topBlock: {
             display: "flex",
@@ -33,9 +35,11 @@ export default function HomeScreen({exit, user, setIsCreateScreen}) {
             fontSize: 20
         },
         block__text: {
-            fontSize: 18,
-            fontWeight: "500",
-            width: "100%"
+            fontSize: 21,
+            fontWeight: "400",
+            width: "100%",
+            marginLeft: 10,
+            marginTop: -5,
         },
     })
 
@@ -79,10 +83,10 @@ export default function HomeScreen({exit, user, setIsCreateScreen}) {
         <View style={style.block}>
             <View style={style.block__header}>
                 <Text style={style.block__header__heading}>События</Text>
-                <DangerButton text="Выйти" color={"white"} onClick={exit}/>
+                <DangerButton text="Выйти" fontWeight={"bold"} color={"white"} onClick={exit}/>
             </View>
             <Text style={style.block__text}>{user.last_name + ' ' + user.first_name + ' ' + user.middle_name}</Text>
-            <DefaultButton text={"Создать событие"} color={"white"} onClick={() => setIsCreateScreen(true)}/>
+            <DefaultButton text={"Создать событие"} fontWeight={"bold"} color={"white"} onClick={() => setIsCreateScreen(true)}/>
             <View style={{width: '100%'}}>
                 {
                     isLoading

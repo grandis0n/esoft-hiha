@@ -13,7 +13,9 @@ export default function DangerButton({text, color, onClick, fontWeight}) {
             color: color,
             borderRadius: 3,
             marginTop: 10,
-            marginBottom: 10
+            marginBottom: 10,
+            height: 40,
+            width: 85,
         },
         buttonPress: {
             padding: 10,
@@ -23,12 +25,14 @@ export default function DangerButton({text, color, onClick, fontWeight}) {
             color: color,
             borderRadius: 3,
             marginTop: 10,
-            marginBottom: 10
+            marginBottom: 10,
+            height: 40,
+            width: 85,
         },
         text: {
             color: color,
-            fontSize: 15,
-            fontWeight: fontWeight ? fontWeight : 'normal'
+            fontSize: 17,
+            fontWeight: "bold",
         }
     })
 

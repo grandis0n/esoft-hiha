@@ -10,30 +10,30 @@ export default function DefaultInput({text, color, onClick, placeholder, status,
             backgroundColor: 'white',
             alignItems: "center",
             justifyContent: "center",
-            color: '#000000',
+            color: '#237496',
             borderRadius: 3,
             borderWidth: 1,
             borderStyle: "solid",
             borderColor: status ? '#CFD8DC' : '#FF1744',
-            marginTop: 10,
-            marginBottom: 10
+            marginTop: 5,
+            marginBottom: 5
         },
         buttonPress: {
             padding: 10,
             backgroundColor: 'white',
             alignItems: "center",
             justifyContent: "center",
-            color: '#000000',
+            color: '#237496',
             borderRadius: 3,
             borderWidth: 1,
             borderStyle: "solid",
             borderColor: '#04A0FF',
-            marginTop: 10,
-            marginBottom: 10
+            marginTop: 5,
+            marginBottom: 5
         },
         text: {
             color: '#FF1744',
-            fontSize: 15
+            fontSize: 20
         }
     })
 

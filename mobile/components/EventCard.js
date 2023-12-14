@@ -10,8 +10,20 @@ const EventCard = ({event, getEvents}) => {
             borderColor: 'black',
             borderWidth: 2,
             borderRadius: 3,
-            marginBottom: 5,
-            padding: 5,
+            marginBottom: 12,
+            padding: 10,
+        },
+        card__Text: {
+            fontSize: 18,
+        },
+        card__Text2: {
+            fontSize: 22,
+            marginLeft: -4,
+            marginBottom: 2,
+        },
+        card__Text1: {
+            fontSize: 17,
+            marginTop: 0.5
         },
         card: {
             display: "flex",
@@ -22,15 +34,21 @@ const EventCard = ({event, getEvents}) => {
         card__contentBlock: {},
         card__contentBlock__header: {
             display: "flex",
-            flexDirection: "row"
+            flexDirection: "row",
         },
         card__contentBlock__header__heading: {
             fontWeight: "bold",
-            marginRight: 5
+            fontSize: 23,
+            marginRight: 4,
+            marginTop: -4.1
         },
         card__contentBlock__body: {
             display: "flex",
-            flexDirection: "column"
+            flexDirection: "column",
+            fontSize: 40,
+            marginRight: 4,
+            marginTop: 2,
+            marginLeft: 12,
         },
         wrapperCard__errorText: {
             color: '#FF1744'
@@ -71,22 +89,22 @@ const EventCard = ({event, getEvents}) => {
                     <View style={style.card__contentBlock__header}>
                         <Text style={style.card__contentBlock__header__heading}> {
                             {
-                                1: 'Встреча',
-                                2: 'Показ',
-                                3: 'Звонок',
+                                1: 'Встреча:',
+                                2: 'Показ:',
+                                3: 'Звонок:',
                             }[event.type_id]
                         }
                         </Text>
-                        <Text>{event.datetime.split('T')[0] + ' в ' + event.datetime.split('T')[1].slice(0, 5)}</Text>
+                        <Text style={style.card__Text1}>{event.datetime.split('T')[0] + ' в ' + event.datetime.split('T')[1].slice(0, 5)}</Text>
                     </View>
                     <View style={style.card__contentBlock__body}>
                         {
-                            event.comment && <Text>{event.comment}</Text>
+                            event.comment && <Text style={style.card__Text2}>{event.comment}</Text>
                         }
-                        <Text>Длительность: {event.duration ? event.duration + 'мин' : '∞'}</Text>
+                        <Text style={style.card__Text}>Длительность: {event.duration ? event.duration + 'мин' : '∞'}</Text>
                     </View>
                 </View>
-                <DangerButton text={"X"} color="white" fontWeight={"bold"} onClick={() => deleteEvent(event.id)}/>
+                <DangerButton text={"Удалить"} color="white" fontWeight={"bold"} onClick={() => deleteEvent(event.id)}/>
             </View>
         </View>
     );

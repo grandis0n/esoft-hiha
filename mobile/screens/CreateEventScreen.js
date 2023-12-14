@@ -20,12 +20,14 @@ export default function CreateEventScreen({exit, user, setIsCreateScreen}) {
             width: "100%",
             padding: 0,
             display: "flex",
+            marginTop: 30,
             flexDirection: "row",
             alignItems: "center",
             justifyContent: "space-between"
         },
         block__header__heading: {
-            fontSize: 20
+            fontSize: 30,
+            fontWeight: 'bold',
         },
         block__topBlock: {
             display: "flex",
@@ -42,7 +44,8 @@ export default function CreateEventScreen({exit, user, setIsCreateScreen}) {
             width: "100%"
         },
         form__text: {
-            fontSize: 18
+            fontSize: 18,
+            marginBottom: 8,
         }
     })
 

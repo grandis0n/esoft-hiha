@@ -9,18 +9,22 @@ export default function AuthScreens({check}) {
     const style = StyleSheet.create({
         block: {
             flex: 1,
-            display: "flex",
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
             backgroundColor: "white",
         },
         block__form: {
-            width: "100%",
-            padding: 20
+            width: "200%",
+            padding: 20,
+            alignItems: "center",
         },
         text: {
-            fontSize: 20,
+            fontSize: 34,
+            fontWeight: "bold"
+        },
+        Text2: {
+            fontSize: 34,
             fontWeight: "bold"
         }
     })
@@ -105,7 +109,7 @@ export default function AuthScreens({check}) {
         <View style={style.block}>
             <Text style={style.text}>Авторизация</Text>
             <View style={style.block__form}>
-                <DefaultInput placeholder={"Введите ФИО"} onClick={changeData} status={!isError}
+                <DefaultInput style={style.Text2} placeholder={"Введите ФИО"} onClick={changeData} status={!isError}
                               statusText={errorText}/>
                 <DefaultButton text={"Войти"} color={"white"} onClick={onCLickCheckAuth}/>
             </View>

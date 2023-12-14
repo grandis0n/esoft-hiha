@@ -10,7 +10,7 @@ export default function NumericInput({text, color, onClick, placeholder, status,
             backgroundColor: 'white',
             alignItems: "center",
             justifyContent: "center",
-            color: '#000000',
+            color: '#fcfafa',
             borderRadius: 3,
             borderWidth: 1,
             borderStyle: "solid",
@@ -23,7 +23,7 @@ export default function NumericInput({text, color, onClick, placeholder, status,
             backgroundColor: 'white',
             alignItems: "center",
             justifyContent: "center",
-            color: '#000000',
+            color: '#237496',
             borderRadius: 3,
             borderWidth: 1,
             borderStyle: "solid",
@@ -33,7 +33,7 @@ export default function NumericInput({text, color, onClick, placeholder, status,
         },
         text: {
             color: '#FF1744',
-            fontSize: 15
+            fontSize: 22
         }
     })
 

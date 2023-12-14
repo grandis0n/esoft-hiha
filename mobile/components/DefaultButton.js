@@ -13,7 +13,10 @@ export default function DefaultButton({text, color, onClick}) {
             color: color,
             borderRadius: 3,
             marginTop: 10,
-            marginBottom: 10
+            marginBottom: 15,
+            fontWeight: "bold",
+            height: 45,
+            width: 150,
         },
         buttonPress: {
             padding: 10,
@@ -22,12 +25,16 @@ export default function DefaultButton({text, color, onClick}) {
             justifyContent: "center",
             color: color,
             borderRadius: 3,
+            fontWeight: "bold",
             marginTop: 10,
-            marginBottom: 10
+            marginBottom: 15,
+            height: 45,
+            width: 150,
         },
         text: {
             color: color,
-            fontSize: 15
+            fontSize: 17,
+            fontWeight: "bold",
         }
     })
 
