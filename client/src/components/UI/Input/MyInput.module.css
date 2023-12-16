@@ -1,14 +1,14 @@
 .myInpt{
     border-radius: 3px;
-    color: #ECEFF1;
-    height: 36px;
-    width: 250px;
-    margin-top: 15px;
+    background-color: #f6f1f1;
+    height: 43px;
+    width: 280px;
+    margin-top: 16px;
     margin-right: 10px;
-    margin-bottom: 0px;
+    margin-bottom: -5px;
     border: 1.5px solid #ECEFF1; 
     padding: 10px;
-    outline-color: #04A0FF;
+    outline-color: #56768c;
 }
 
 .myInpt:hover{
@@ -16,11 +16,11 @@
 }
 
 .myInpt:focus{
-    caret-color: #04A0FF;
+    caret-color: #e7d2c6;
     color: #f1f3f6;
 }
 
 .myInpt:valid{
-    color: #5d6977;
+    color: #989083;
     border-color: #6e7a81;
 }

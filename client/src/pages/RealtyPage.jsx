@@ -342,7 +342,7 @@ const RealtyPage = () => {
                 <DeleteButton onClick={()=>handleOutOfSearch()}>Сбросить параметры поиска</DeleteButton>
             </div>
             <div className="filter">
-                <Box sx={{ minWidth: 250, marginRight: '10px', marginTop: '5px'}}>
+                <Box sx={{ minWidth: 250, marginRight: '10px', marginTop: '10px'}}>
                     <FormControl fullWidth>
                         <InputLabel id="demo-simple-select-label">Тип</InputLabel>
                         <Select
@@ -370,7 +370,7 @@ const RealtyPage = () => {
             <MyModal active={modalCreateActive} setActive={setModalCreateActive}>
                 <div className="createModal">
                     <form id="crtForm" className="createModal">
-                        <Box sx={{ minWidth: 200 }}>
+                        <Box style={{ minWidth: 200, marginRight: 20, color: 'blue' }}>
                             <FormControl fullWidth>
                                 <InputLabel id="demo-simple-select-label">Тип</InputLabel>
                                 <Select
@@ -380,9 +380,9 @@ const RealtyPage = () => {
                                 label="Age"
                                 onChange={e=>{setTypeOfRealty(e.target.value)}}
                                 >
-                                <MenuItem value={1}>Земля</MenuItem>
-                                <MenuItem value={2}>Дом</MenuItem>
-                                <MenuItem value={3}>Квартира</MenuItem>
+                                <MenuItem value={1} >Земля</MenuItem>
+                                <MenuItem value={2} >Дом</MenuItem>
+                                <MenuItem value={3} >Квартира</MenuItem>
                                 </Select>
                             </FormControl>
                         </Box>

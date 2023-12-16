@@ -4,6 +4,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    border-bottom: 3px solid #d2d0d0;
 }
 
 .MyList{
@@ -12,8 +13,9 @@
 
 .MyLink{
     text-decoration: none;
-    color: #546E7A;
+    color: #2d383d;
     font-weight: 500;
+    font-size: 18px;
 }
 
 .MyLink:hover{
@@ -22,9 +24,9 @@
 
 .MyList li{
     list-style-type: none;
-    margin-left: 20px;
+    margin-left: 24px;
 }
 
 .MyLogo{
-    width: 100px;
+    width: 120px;
 }
